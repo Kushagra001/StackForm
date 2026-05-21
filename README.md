@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# StackForm — Engineered High-Performance Systems
 
-## Getting Started
+StackForm is a premium, state-of-the-art solopreneur developer portfolio built for **Kushagra Singh Negi**. It is engineered not just as a static website, but as a high-performance software system designed to convert skeptical clients, capture leads, automate workflows, and connect to business tools from day one.
 
-First, run the development server:
+---
 
+## 🚀 Key Features
+
+*   **Premium Visual Aesthetics**: Harmonic dark-mode palette, subtle blur filters, custom SVG elements, and beautiful glassmorphism.
+*   **3D Interactive Spline Scenes**: Features responsive, scroll-driven interactive 3D cards and assets.
+*   **Dynamic Micro-Animations**: Smooth scroll animations, entrance staggers, and status indicators powered by GSAP and ScrollTrigger.
+*   **Agency vs. Stackform Comparison**: A high-trust value proposition matrix highlighting the advantages of working directly with a solopreneur over slow, bloated agencies.
+*   **Three-Tier Pricing & Packages**: Structured, transparent service packages (Starter, System, Full Build) to qualify leads immediately.
+*   **Authentic Mock Terminal**: An interactive JSON terminal displaying the developer's technical stack, location, availability, and strict JSON-formatted skills array.
+*   **Responsive Layouts**: Asymmetric grids that automatically scale and reflow cleanly for mobile, tablet, and ultra-wide desktop monitors.
+*   **Sanity CMS Integration**: Pre-wired content management structure for projects and case studies.
+
+---
+
+## 🛠️ The Core Stack
+
+StackForm is built with cutting-edge front-end technologies:
+
+*   **Framework**: [Next.js](https://nextjs.org/) (App Router structure)
+*   **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict typing across all components)
+*   **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) (With CSS variables mapping for high performance)
+*   **Animation**: [GSAP](https://gsap.com/) & [ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) (Hardware-accelerated performance)
+*   **3D Elements**: [Spline Runtime](https://spline.design/)
+*   **Icons**: [Lucide React](https://lucide.dev/)
+*   **Deployment**: Optimized for Vercel
+
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Kushagra001/StackForm.git
+cd StackForm
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
+```bash
+pnpm install
+# or npm install / yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Set up environment variables
+Create a `.env.local` file in the root directory and configure any necessary API tokens (e.g., Sanity, Resend).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Run the development server
+```bash
+pnpm dev
+# or npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the live site.
 
-## Learn More
+### 5. Validate and Build
+To verify type safety and generate a production build:
+```bash
+# Verify TypeScript compilation
+pnpm type-check
 
-To learn more about Next.js, take a look at the following resources:
+# Run linter
+pnpm lint
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Build for production
+pnpm build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 👤 Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*   **Kushagra Singh Negi** — Full-Stack Developer & Automation Engineer based in Jaipur, India.

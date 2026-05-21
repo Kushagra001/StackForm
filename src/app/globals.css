@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Colors */
+  --color-sf-black: #080810;
+  --color-sf-black-2: #0d0d18;
+  --color-sf-black-3: #12121f;
+  --color-sf-blue: #4f6ef7;
+  --color-sf-blue-button: #3d5de0;
+  --color-sf-blue-dim: #2d3d8f;
+  --color-sf-blue-glow: rgba(79, 110, 247, 0.15);
+  --color-sf-white: #f0f0ff;
+  --color-sf-white-dim: #c5c5e0;
+  --color-sf-white-faint: #8c8ca8;
+  --color-sf-border: rgba(240, 240, 255, 0.08);
+  --color-sf-border-strong: rgba(240, 240, 255, 0.16);
+
+  /* Fonts — next/font injects CSS vars --font-cal, --font-inter, --font-jetbrains */
+  --font-display: var(--font-cal, "Cal Sans"), var(--font-inter, "Inter"), system-ui, sans-serif;
+  --font-sans: var(--font-inter, "Inter"), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains, "JetBrains Mono"), monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #080810;
+  color: #f0f0ff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Custom selection */
+::selection {
+  background: #4f6ef7;
+  color: #ffffff;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: #080810;
+}
+::-webkit-scrollbar-thumb {
+  background: #4f6ef7;
+  border-radius: 2px;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid #4f6ef7;
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 0.35;
+    box-shadow: 0 0 0 0 rgba(79, 110, 247, 0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 8px 2px rgba(79, 110, 247, 0.7);
+  }
+}
+
+.animate-status-pulse {
+  animation: statusPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Hides Spline watermark */
+canvas + div[style*="position: absolute"] {
+  display: none !important;
+}
+
+
