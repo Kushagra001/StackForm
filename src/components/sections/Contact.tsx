@@ -118,7 +118,7 @@ export function Contact() {
       hoverBg: 'rgba(79,110,247,0.08)',
     },
     {
-      href: 'https://wa.me/919999999999',
+      href: 'https://wa.me/918949370535',
       label: 'WhatsApp',
       sub: 'Quick questions welcome',
       note: 'Usually replies same day',
@@ -128,7 +128,7 @@ export function Contact() {
       hoverBg: 'rgba(74,222,128,0.05)',
     },
     {
-      href: 'https://linkedin.com/in/kushagra',
+      href: 'https://www.linkedin.com/in/kushagra-singh-negi',
       label: 'LinkedIn',
       sub: 'View full profile',
       note: 'Connect or message',
