@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { CopyEmail } from '@/components/ui/CopyEmail'
 
+import { Logo } from '@/components/ui/Logo'
+
 const navLinks = [
   { label: 'Work', href: '#work', section: 'work' },
   { label: 'Services', href: '#services', section: 'services' },
@@ -58,18 +60,8 @@ export function Nav() {
       }}
     >
       {/* Logo */}
-      <Link href="/" className="flex items-center gap-2 group">
-        <span className="text-sf-blue" style={{ fontSize: '8px' }}>●</span>
-        <span
-          className="text-sf-white tracking-tight"
-          style={{
-            fontFamily: 'var(--font-cal), var(--font-inter), sans-serif',
-            fontSize: '18px',
-            color: '#f0f0ff',
-          }}
-        >
-          Stackform
-        </span>
+      <Link href="/" className="group">
+        <Logo size={28} />
       </Link>
 
       {/* Nav links */}

@@ -1,3 +1,5 @@
+import { Logo } from '@/components/ui/Logo'
+
 export function Footer() {
   const socials = [
     {
@@ -37,15 +39,7 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-8">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <div
-              className="text-sf-white"
-              style={{
-                fontFamily: 'var(--font-cal), var(--font-inter), sans-serif',
-                fontSize: '16px',
-              }}
-            >
-              Stackform
-            </div>
+            <Logo size={24} />
             <div className="text-sf-white-faint mt-0.5" style={{ fontSize: '12px' }}>
               by Kushagra Singh Negi
             </div>
