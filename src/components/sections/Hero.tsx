@@ -50,8 +50,8 @@ export function Hero() {
       const id = win.requestIdleCallback(run, { timeout: 700 })
       return () => {
         mounted = false
-        win.cancelIdleCallback && win.cancelIdleCallback(id)
-        gsapCtxRef.current && gsapCtxRef.current.revert()
+        win.cancelIdleCallback?.(id)
+        gsapCtxRef.current?.revert()
       }
     }
 
@@ -59,7 +59,7 @@ export function Hero() {
     return () => {
       mounted = false
       clearTimeout(t)
-      gsapCtxRef.current && gsapCtxRef.current.revert()
+      gsapCtxRef.current?.revert()
     }
   }, [])
 
