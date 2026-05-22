@@ -56,6 +56,8 @@ export const metadata: Metadata = {
     description:
       "Conversion-focused web development with automation expertise.",
     images: ["/og-image.png"],
+    site: "@StackForm_dev",
+    creator: "@StackForm_dev",
   },
   robots: {
     index: true,
