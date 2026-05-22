@@ -22,7 +22,7 @@ export async function POST(request: Request) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
-      from: "Stackform Contact <onboarding@resend.dev>",
+      from: "StackForm <contact@stack-form.dev>",
       to: ["hello@stack-form.dev"],
       subject: `New project inquiry from ${name}`,
       html: `
