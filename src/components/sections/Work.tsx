@@ -117,7 +117,7 @@ function ProjectCard({
       if (project.coverImage) {
         try {
           const mod = await import('@/lib/sanity')
-          const url = mod.urlFor(project.coverImage).width(1600).height(900).url()
+          const url = mod.urlFor(project.coverImage).url()
           if (mounted && url) setDisplayImage(url)
           return
         } catch {
@@ -152,7 +152,7 @@ function ProjectCard({
         {/* Screenshot / image area */}
         <div
           className="relative overflow-hidden"
-          style={{ paddingBottom: fullWidth ? '40%' : '60%' }}
+          style={{ paddingBottom: fullWidth ? '52%' : '60%' }}
         >
           {/* Real screenshot — falls back to accent placeholder if missing */}
           <div className="absolute inset-0">
@@ -160,7 +160,7 @@ function ProjectCard({
               src={displayImage}
               alt={`${nameStr} screenshot`}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              unoptimized
               className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
               onError={(e) => {
                 // Hide broken image; placeholder below shows through

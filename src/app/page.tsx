@@ -14,6 +14,8 @@ import { sanity } from "@/lib/sanity"
 import { PROJECTS_QUERY } from "@/lib/queries"
 import type { Project } from "@/types/project"
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   let projects: Project[] = [];
 

@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
-import { sanity } from "@/lib/sanity";
+import { sanity, urlFor } from "@/lib/sanity";
 import { PROJECT_QUERY, PROJECTS_QUERY } from "@/lib/queries";
 import { Nav } from "@/components/sections/Nav";
 import Link from 'next/link'
+import Image from "next/image";
 import { Footer } from "@/components/sections/Footer";
 import { Tag } from "@/components/ui/Tag";
 import { Button } from "@/components/ui/Button";
@@ -23,6 +24,8 @@ export async function generateStaticParams() {
     return [];
   }
 }
+
+export const dynamic = "force-dynamic";
 
 export default async function CaseStudyPage({ params }: Props) {
   const { slug } = await params;
@@ -243,6 +246,76 @@ export default async function CaseStudyPage({ params }: Props) {
                 </p>
               </div>
             )
+        )}
+
+        {/* Gallery / Screenshots */}
+        {((project.images && project.images.length > 0) || slug) && (
+          <div className="mt-16 pt-16 border-t border-sf-border">
+            <h2
+              className="text-sf-white mb-8"
+              style={{
+                fontFamily: "var(--font-cal), Inter, system-ui, sans-serif",
+                fontSize: "24px",
+              }}
+            >
+              Gallery
+            </h2>
+            <div className="flex flex-col gap-8">
+              {project.images && project.images.length > 0 ? (
+                project.images.map((img, idx) => {
+                  try {
+                    const src = urlFor(img).url();
+                    return (
+                      <div key={idx} className="relative rounded-xl border border-sf-border overflow-hidden bg-sf-black-2 shadow-2xl">
+                        <Image
+                          src={src}
+                          alt={`${project.title} screenshot ${idx + 1}`}
+                          width={1920}
+                          height={1080}
+                          unoptimized
+                          className="w-full h-auto object-contain"
+                        />
+                      </div>
+                    );
+                  } catch {
+                    return null;
+                  }
+                })
+              ) : (
+                // Local static fallbacks
+                <>
+                  <div className="relative rounded-xl border border-sf-border overflow-hidden bg-sf-black-2 shadow-2xl">
+                    <Image
+                      src={`/work/${slug}-lower.png`}
+                      alt={`${project.title} screen 1`}
+                      width={1920}
+                      height={1080}
+                      unoptimized
+                      className="w-full h-auto object-contain"
+                      onError={(e) => {
+                        // Hide container if image doesn't exist
+                        ;(e.currentTarget.parentElement as HTMLElement).style.display = 'none';
+                      }}
+                    />
+                  </div>
+                  <div className="relative rounded-xl border border-sf-border overflow-hidden bg-sf-black-2 shadow-2xl">
+                    <Image
+                      src={`/work/${slug}-lower-2.png`}
+                      alt={`${project.title} screen 2`}
+                      width={1920}
+                      height={1080}
+                      unoptimized
+                      className="w-full h-auto object-contain"
+                      onError={(e) => {
+                        // Hide container if image doesn't exist
+                        ;(e.currentTarget.parentElement as HTMLElement).style.display = 'none';
+                      }}
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
         )}
 
         {/* Live link */}

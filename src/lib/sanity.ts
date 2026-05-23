@@ -5,7 +5,7 @@ export const sanity = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "placeholder",
   dataset: "production",
   apiVersion: "2024-01-01",
-  useCdn: true,
+  useCdn: process.env.NODE_ENV === "production",
 });
 
 const builder = createImageUrlBuilder(sanity);

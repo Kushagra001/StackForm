@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: cdn.sanity.io https://*.spline.design https://spline.design; font-src 'self'; connect-src 'self' cdn.sanity.io wss: https://prod.spline.design https://*.spline.design https://spline.design https://unpkg.com; media-src 'self'; object-src 'none'; frame-src 'self' https://my.spline.design https://*.spline.design https://spline.design; child-src 'self' blob: https://my.spline.design https://*.spline.design https://spline.design; worker-src 'self' blob: https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';",
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://unpkg.com https://*.sanity-cdn.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: cdn.sanity.io https://*.sanity-cdn.com https://*.googleusercontent.com https://*.spline.design https://spline.design; font-src 'self'; connect-src 'self' https://*.sanity.io https://registry.npmjs.org https://*.sanity-cdn.com wss: https://prod.spline.design https://*.spline.design https://spline.design https://unpkg.com; media-src 'self'; object-src 'none'; frame-src 'self' https://my.spline.design https://*.spline.design https://spline.design; child-src 'self' blob: https://my.spline.design https://*.spline.design https://spline.design; worker-src 'self' blob: https://unpkg.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';",
           },
           {
             key: "Strict-Transport-Security",

@@ -10,6 +10,8 @@ export const metadata = {
   description: "Selected projects. Five systems built for growth.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function WorkPage() {
   let projects: Project[] = [];
 
