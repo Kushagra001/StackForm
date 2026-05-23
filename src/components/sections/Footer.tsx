@@ -52,14 +52,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16">
           
           {/* Logo & Headline Column */}
-          <div className="md:col-span-6 flex flex-col items-start justify-between gap-6">
+          <div className="md:col-span-6 space-y-6">
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Logo size={28} />
-                <span className="text-sf-white text-lg font-bold tracking-tight" style={{ fontFamily: 'var(--font-cal), var(--font-inter), sans-serif' }}>
-                  Stackform
-                </span>
-              </div>
+              <Logo size={28} />
               <h3 
                 className="text-sf-white leading-tight font-bold tracking-tight max-w-sm"
                 style={{ 
@@ -69,18 +64,6 @@ export function Footer() {
               >
                 Let&apos;s build what others can&apos;t.
               </h3>
-            </div>
-            
-            {/* Glowing Active Status Badge */}
-            <div 
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 font-medium select-none shadow-[0_0_15px_rgba(16,185,129,0.05)]" 
-              style={{ fontSize: '10px', fontFamily: 'var(--font-jetbrains, monospace)' }}
-            >
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
-              </span>
-              Available for new projects
             </div>
           </div>
 
