@@ -8,6 +8,22 @@
       "env_required": [],
       "skills_that_use_this": ["design-extract"],
       "status": "active"
+    },
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp",
+      "env_required": [],
+      "skills_that_use_this": [
+        "figma-use",
+        "figma-create-new-file",
+        "figma-generate-design",
+        "figma-generate-diagram",
+        "figma-generate-library",
+        "figma-code-connect",
+        "figma-use-figjam",
+        "figma-use-slides"
+      ],
+      "status": "active"
     }
   }
 }

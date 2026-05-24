@@ -52,4 +52,12 @@ lh-report*.json
 pnpm-workspace.yaml.bak
 skills/
 
+# Figma MCP
+.claude-plugin/
+.cursor-plugin/
+.mcp.json
+Figma Icon (Full-color).svg
+gemini-extension.json
+server.json
+
 
