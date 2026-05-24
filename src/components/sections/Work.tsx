@@ -208,8 +208,8 @@ function ProjectCard({
 
         {/* Info */}
         <div className="p-6">
-          <div className="flex items-start justify-between gap-4 mb-3">
-            <div>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
+            <div className="space-y-1">
               <h3
                 className="text-sf-white"
                 style={{
@@ -219,11 +219,11 @@ function ProjectCard({
               >
                 {nameStr}
               </h3>
-              <p className="text-sf-white-dim mt-0.5" style={{ fontSize: '13px' }}>
+              <p className="text-sf-white-dim" style={{ fontSize: '13px' }}>
                 {descStr}
               </p>
             </div>
-            <div className="flex flex-wrap gap-2 justify-end shrink-0 max-w-50">
+            <div className="flex flex-wrap gap-2 md:justify-end shrink-0">
               {project.tags.slice(0, 3).map(tag => (
                 <Tag key={tag}>{tag}</Tag>
               ))}
