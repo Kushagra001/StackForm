@@ -22,45 +22,17 @@ export function Hero() {
   const [showScene, setShowScene] = useState(false)
 
   useEffect(() => {
-    // Defer GSAP timeline until browser is idle to reduce main-thread contention
-    let mounted = true
-    const gsapCtxRef: { current: null | { revert: () => void } } = { current: null }
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
-    const run = () => {
-      if (!mounted) return
-      const ctx = gsap.context(() => {
-        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-
-        tl.from(badgeRef.current, { opacity: 0, y: 14, duration: 0.5, delay: 0.3 })
-          .from(headRef.current, { opacity: 0, y: 50, duration: 1.0 }, '-=0.1')
-          .from(subRef.current, { opacity: 0, y: 24, duration: 0.7 }, '-=0.5')
-          .from(ctaRef.current, { opacity: 0, y: 20, duration: 0.6 }, '-=0.4')
-          .from(statsRef.current, { opacity: 0, duration: 0.5 }, '-=0.2')
-          .from(sceneRef.current, { opacity: 0, scale: 0.96, duration: 1.2, ease: 'power2.out' }, '<0.2')
-      })
-      gsapCtxRef.current = ctx as unknown as { revert: () => void }
-    }
-
-    const win = window as unknown as Window & {
-      requestIdleCallback?: (cb: () => void, opts?: { timeout?: number }) => number
-      cancelIdleCallback?: (id: number) => void
-    }
-
-    if (typeof win.requestIdleCallback === 'function') {
-      const id = win.requestIdleCallback(run, { timeout: 700 })
-      return () => {
-        mounted = false
-        win.cancelIdleCallback?.(id)
-        gsapCtxRef.current?.revert()
-      }
-    }
-
-    const t = setTimeout(run, 700)
-    return () => {
-      mounted = false
-      clearTimeout(t)
-      gsapCtxRef.current?.revert()
-    }
+      tl.from(badgeRef.current, { opacity: 0, y: 14, duration: 0.5, delay: 0.15 })
+        .from(headRef.current, { opacity: 0, y: 50, duration: 0.8 }, '-=0.1')
+        .from(subRef.current, { opacity: 0, y: 24, duration: 0.6 }, '-=0.4')
+        .from(ctaRef.current, { opacity: 0, y: 20, duration: 0.5 }, '-=0.3')
+        .from(statsRef.current, { opacity: 0, duration: 0.4 }, '-=0.2')
+        .from(sceneRef.current, { opacity: 0, scale: 0.96, duration: 1.0, ease: 'power2.out' }, '<0.1')
+    })
+    return () => ctx.revert()
   }, [])
 
   useEffect(() => {
