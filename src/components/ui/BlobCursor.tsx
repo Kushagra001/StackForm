@@ -5,11 +5,24 @@ import { gsap } from 'gsap'
 export function BlobCursor() {
   const blobRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
+    const checkDevice = () => {
+      const hasHover = window.matchMedia('(hover: hover)').matches
+      const isLargeScreen = window.innerWidth >= 768
+      setIsDesktop(hasHover && isLargeScreen)
+    }
+
+    checkDevice()
+    window.addEventListener('resize', checkDevice)
+    return () => window.removeEventListener('resize', checkDevice)
+  }, [])
+
+  useEffect(() => {
+    if (!isDesktop) return
     const blob = blobRef.current
     if (!blob) return
-    if (window.matchMedia('(hover: none)').matches) return
 
     const xTo = gsap.quickTo(blob, 'x', { duration: 0.06, ease: 'power1.out' })
     const yTo = gsap.quickTo(blob, 'y', { duration: 0.06, ease: 'power1.out' })
@@ -52,13 +65,14 @@ export function BlobCursor() {
         el.removeEventListener('mouseleave', onLeaveLink)
       })
     }
-  }, [])
+  }, [isDesktop])
+
+  if (!isDesktop) return null
 
   return (
     <>
       <style>{`
         * { cursor: none !important; }
-        @media (hover: none) { * { cursor: auto !important; } }
       `}</style>
       <div
         ref={blobRef}
