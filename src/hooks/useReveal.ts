@@ -1,12 +1,7 @@
 "use client";
 
 import { useEffect, useRef, RefObject } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { loadGsap } from "@/lib/gsap";
 
 interface UseRevealOptions {
   y?: number;
@@ -36,27 +31,31 @@ export function useReveal<T extends HTMLElement>(
 
     const children = el.children.length > 0 ? Array.from(el.children) : [el];
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        children,
-        { opacity, y },
-        {
-          opacity: 1,
-          y: 0,
-          duration,
-          stagger,
-          delay,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: el,
-            start: `top ${(1 - threshold) * 100}%`,
-            toggleActions: "play none none none",
-          },
-        }
-      );
+    let cleanup: (() => void) | undefined;
+    loadGsap().then(({ gsap }) => {
+      const ctx = gsap.context(() => {
+        gsap.fromTo(
+          children,
+          { opacity, y },
+          {
+            opacity: 1,
+            y: 0,
+            duration,
+            stagger,
+            delay,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: `top ${(1 - threshold) * 100}%`,
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      });
+      cleanup = () => ctx.revert();
     });
 
-    return () => ctx.revert();
+    return () => cleanup?.();
   }, [y, opacity, duration, stagger, delay, threshold]);
 
   return ref;

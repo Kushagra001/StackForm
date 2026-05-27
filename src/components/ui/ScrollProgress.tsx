@@ -1,26 +1,27 @@
 'use client'
 import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger)
+import { loadGsap } from '@/lib/gsap'
 
 export function ScrollProgress() {
   const barRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to(barRef.current, {
-        scaleX: 1,
-        ease: 'none',
-        scrollTrigger: {
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: true,
-        }
+    let cleanup: (() => void) | undefined
+    loadGsap().then(({ gsap }) => {
+      const ctx = gsap.context(() => {
+        gsap.to(barRef.current, {
+          scaleX: 1,
+          ease: 'none',
+          scrollTrigger: {
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: true,
+          }
+        })
       })
+      cleanup = () => ctx.revert()
     })
-    return () => ctx.revert()
+    return () => cleanup?.()
   }, [])
 
   return (

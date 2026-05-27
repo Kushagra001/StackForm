@@ -14,7 +14,8 @@ import { sanity } from "@/lib/sanity"
 import { PROJECTS_QUERY } from "@/lib/queries"
 import type { Project } from "@/types/project"
 
-export const dynamic = "force-dynamic";
+// ISR: rebuild at most once per hour; serves from Vercel edge cache between revalidations
+export const revalidate = 3600;
 
 export default async function HomePage() {
   let projects: Project[] = [];

@@ -4,14 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ExternalLink } from 'lucide-react'
 import { Tag } from '@/components/ui/Tag'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { loadGsap } from '@/lib/gsap'
 import { useEffect, useRef, useState } from 'react'
 // Dynamically import `urlFor` at runtime to avoid bundling Sanity client
 // into the initial client bundle. This keeps heavy Sanity code out of
 // the main parse/eval path until needed.
-
-if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger)
 
 interface UnifiedProject {
   _id?: string;
@@ -101,12 +98,16 @@ const resultCopyBySlug: Record<string, string> = {
 function ProjectCard({
   project,
   fullWidth = false,
+  priority = false,
 }: {
   project: UnifiedProject
   fullWidth?: boolean
+  priority?: boolean
 }) {
   // Hooks must be called unconditionally — declare them before early returns
-  const [displayImage, setDisplayImage] = useState<string>('/work/flow-hero.png')
+  const [displayImage, setDisplayImage] = useState<string>(
+    (project?.image as string) || '/work/flow-hero.png'
+  )
 
   // Call hooks unconditionally. Guard inside effect for `project` presence.
   useEffect(() => {
@@ -160,7 +161,13 @@ function ProjectCard({
               src={displayImage}
               alt={`${nameStr} screenshot`}
               fill
-              unoptimized
+              sizes={
+                fullWidth
+                  ? '(max-width: 768px) 100vw, (max-width: 1400px) 90vw, 1100px'
+                  : '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px'
+              }
+              quality={92}
+              priority={priority}
               className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
               onError={(e) => {
                 // Hide broken image; placeholder below shows through
@@ -286,20 +293,24 @@ export function Work({ projects: dynamicProjects }: { projects?: UnifiedProject[
     : fallbackProjects
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.work-cards > *', {
-        scale: 0.95,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-        }
-      })
-    }, containerRef)
-    return () => ctx.revert()
+    let cleanup: (() => void) | undefined
+    loadGsap().then(({ gsap }) => {
+      const ctx = gsap.context(() => {
+        gsap.from('.work-cards > *', {
+          scale: 0.95,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 80%',
+          }
+        })
+      }, containerRef)
+      cleanup = () => ctx.revert()
+    })
+    return () => cleanup?.()
   }, [displayProjects])
 
   return (
@@ -334,6 +345,7 @@ export function Work({ projects: dynamicProjects }: { projects?: UnifiedProject[
                 key={key}
                 project={project}
                 fullWidth={isFullWidth}
+                priority={index === 0}
               />
             )
           })}

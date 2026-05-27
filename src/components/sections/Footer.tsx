@@ -141,7 +141,7 @@ export function Footer() {
             <p className="text-sf-white-faint" style={{ fontSize: '11px' }} suppressHydrationWarning>
               © {new Date().getFullYear()} Stackform. All rights reserved.
             </p>
-            <p className="text-sf-white-faint/60" style={{ fontSize: '10px' }}>
+            <p className="text-sf-white-faint" style={{ fontSize: '10px' }}>
               by Kushagra Singh Negi · currently building: stack-form.dev
             </p>
           </div>

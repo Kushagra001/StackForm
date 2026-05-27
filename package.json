@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "make-mockups": "node ./scripts/build_mockups.js",
+    "make-mockups-jimp": "node ./scripts/build_mockups_jimp.js",
+    "render-mockups": "node ./scripts/render_mockups_playwright.js",
+    "capture-sections": "node ./scripts/capture_sections_playwright.js"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -40,7 +44,9 @@
     "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "jimp": "^1.6.1",
     "playwright": "^1.60.0",
+    "sharp": "^0.32.6",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
@@ -49,5 +55,11 @@
       "sharp",
       "unrs-resolver"
     ]
-  }
+  },
+  "browserslist": [
+    "chrome >= 90",
+    "firefox >= 88",
+    "safari >= 14",
+    "edge >= 90"
+  ]
 }

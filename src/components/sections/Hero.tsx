@@ -1,15 +1,11 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import dynamic from 'next/dynamic'
-import gsap from 'gsap'
+import { loadGsap } from '@/lib/gsap'
 import { Button } from '@/components/ui/Button'
 
-// Lazy-load the heavy WebGL scene — no SSR
-const SplineHeroScene = dynamic(
-  () => import('@/components/three/SplineHeroScene').then(m => ({ default: m.SplineHeroScene })),
-  { ssr: false, loading: () => null }
-)
+// Component type for dynamically loaded Spline scene
+type SplineSceneComponent = React.ComponentType<Record<string, never>>
 
 export function Hero() {
   const contentRef = useRef<HTMLDivElement>(null)
@@ -19,36 +15,59 @@ export function Hero() {
   const ctaRef = useRef<HTMLDivElement>(null)
   const statsRef = useRef<HTMLDivElement>(null)
   const sceneRef = useRef<HTMLDivElement>(null)
-  const [showScene, setShowScene] = useState(false)
+  // Store the lazily imported component in state — null until idle fires
+  const [SceneComponent, setSceneComponent] = useState<SplineSceneComponent | null>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    let cleanup: (() => void) | undefined
+    loadGsap().then(({ gsap }) => {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
-      tl.from(badgeRef.current, { opacity: 0, y: 14, duration: 0.5, delay: 0.15 })
-        .from(headRef.current, { opacity: 0, y: 50, duration: 0.8 }, '-=0.1')
-        .from(subRef.current, { opacity: 0, y: 24, duration: 0.6 }, '-=0.4')
-        .from(ctaRef.current, { opacity: 0, y: 20, duration: 0.5 }, '-=0.3')
-        .from(statsRef.current, { opacity: 0, duration: 0.4 }, '-=0.2')
-        .from(sceneRef.current, { opacity: 0, scale: 0.96, duration: 1.0, ease: 'power2.out' }, '<0.1')
+        tl.from(badgeRef.current, { opacity: 0, y: 14, duration: 0.5, delay: 0.15 })
+          .from(headRef.current, { opacity: 0, y: 50, duration: 0.8 }, '-=0.1')
+          .from(subRef.current, { opacity: 0, y: 24, duration: 0.6 }, '-=0.4')
+          .from(ctaRef.current, { opacity: 0, y: 20, duration: 0.5 }, '-=0.3')
+          .from(statsRef.current, { opacity: 0, duration: 0.4 }, '-=0.2')
+          .from(sceneRef.current, { opacity: 0, scale: 0.96, duration: 1.0, ease: 'power2.out' }, '<0.1')
+      })
+      cleanup = () => ctx.revert()
     })
-    return () => ctx.revert()
+    return () => cleanup?.()
   }, [])
 
   useEffect(() => {
-    // Delay loading heavy `HeroScene` chunk until idle to reduce bootup time
-    if (showScene) return
+    // Only load Spline on desktop, and only after browser is idle.
+    // Keeps the 563 KiB Three.js/Spline chunk off mobile entirely.
     const win = window as unknown as Window & {
       requestIdleCallback?: (cb: () => void, opts?: { timeout?: number }) => number
       cancelIdleCallback?: (id: number) => void
     }
-    if (typeof win.requestIdleCallback === 'function') {
-      const id = win.requestIdleCallback(() => setShowScene(true), { timeout: 1000 })
-      return () => win.cancelIdleCallback && win.cancelIdleCallback(id)
+
+    let cancelled = false
+    const load = () => {
+      if (cancelled) return
+      // Only load if on desktop
+      if (window.innerWidth >= 768) {
+        import('@/components/three/SplineHeroScene').then((mod) => {
+          if (!cancelled) setSceneComponent(() => mod.SplineHeroScene as SplineSceneComponent)
+        })
+      }
     }
-    const t = setTimeout(() => setShowScene(true), 1200)
-    return () => clearTimeout(t)
-  }, [showScene])
+
+    if (typeof win.requestIdleCallback === 'function') {
+      const id = win.requestIdleCallback(load, { timeout: 1500 })
+      return () => {
+        cancelled = true
+        win.cancelIdleCallback && win.cancelIdleCallback(id)
+      }
+    }
+    const t = setTimeout(load, 1500)
+    return () => {
+      cancelled = true
+      clearTimeout(t)
+    }
+  }, [])
 
   return (
     <section
@@ -248,7 +267,7 @@ export function Hero() {
               height: '640px',
             }}
           >
-            {showScene ? <SplineHeroScene /> : (
+            {SceneComponent ? <SceneComponent /> : (
               <div aria-hidden="true" style={{width: '100%', height: '100%', background: 'radial-gradient(circle at 30% 30%, rgba(79,110,247,0.04), transparent 40%)'}} />
             )}
 

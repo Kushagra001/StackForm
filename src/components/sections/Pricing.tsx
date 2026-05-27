@@ -1,11 +1,8 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { loadGsap } from '@/lib/gsap'
 import { Check } from 'lucide-react'
-
-if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger)
 
 const packages = [
   {
@@ -52,20 +49,24 @@ export function Pricing() {
   const containerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.pricing-card', {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 75%',
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out',
-      })
-    }, containerRef)
-    return () => ctx.revert()
+    let cleanup: (() => void) | undefined
+    loadGsap().then(({ gsap }) => {
+      const ctx = gsap.context(() => {
+        gsap.from('.pricing-card', {
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 75%',
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out',
+        })
+      }, containerRef)
+      cleanup = () => ctx.revert()
+    })
+    return () => cleanup?.()
   }, [])
 
   return (

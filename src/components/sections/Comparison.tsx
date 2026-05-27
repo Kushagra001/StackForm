@@ -1,11 +1,8 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { loadGsap } from '@/lib/gsap'
 import { Check, X } from 'lucide-react'
-
-if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger)
 
 const comparisons = [
   { theirs: 'Project manager + junior devs', mine: 'You talk to me directly' },
@@ -18,31 +15,34 @@ export function Comparison() {
   const containerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.comp-row', {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 75%',
-        },
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-      })
-      gsap.from('.comp-heading', {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 85%',
-        },
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-      })
-    }, containerRef)
-
-    return () => ctx.revert()
+    let cleanup: (() => void) | undefined
+    loadGsap().then(({ gsap }) => {
+      const ctx = gsap.context(() => {
+        gsap.from('.comp-row', {
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 75%',
+          },
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power3.out',
+        })
+        gsap.from('.comp-heading', {
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 85%',
+          },
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+        })
+      }, containerRef)
+      cleanup = () => ctx.revert()
+    })
+    return () => cleanup?.()
   }, [])
 
   return (

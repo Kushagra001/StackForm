@@ -4,10 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Globe, Zap, ShoppingBag, BarChart } from 'lucide-react'
 import { Tag } from '@/components/ui/Tag'
 import { cn } from '@/lib/utils'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger)
+import { loadGsap } from '@/lib/gsap'
 
 // ── CountUp ─────────────────────────────────────────────────
 function CountUp({ to, suffix = '' }: { to: number; suffix?: string }) {
@@ -209,19 +206,23 @@ export function Services() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.services-content', {
-        x: -40,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-        }
-      })
-    }, containerRef)
-    return () => ctx.revert()
+    let cleanup: (() => void) | undefined
+    loadGsap().then(({ gsap }) => {
+      const ctx = gsap.context(() => {
+        gsap.from('.services-content', {
+          x: -40,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 80%',
+          }
+        })
+      }, containerRef)
+      cleanup = () => ctx.revert()
+    })
+    return () => cleanup?.()
   }, [])
 
   return (

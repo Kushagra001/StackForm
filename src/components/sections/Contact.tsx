@@ -3,11 +3,8 @@
 import { useState } from 'react'
 import { Mail, MessageCircle } from 'lucide-react'
 import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { loadGsap } from '@/lib/gsap'
 import { Button } from '@/components/ui/Button'
-
-if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger)
 
 // LinkedIn SVG (not in lucide@latest)
 function LinkedinIcon({ size = 20 }: { size?: number }) {
@@ -91,19 +88,23 @@ export function Contact() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.contact-content', {
-        y: 80,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-        }
-      })
-    }, containerRef)
-    return () => ctx.revert()
+    let cleanup: (() => void) | undefined
+    loadGsap().then(({ gsap }) => {
+      const ctx = gsap.context(() => {
+        gsap.from('.contact-content', {
+          y: 80,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 80%',
+          }
+        })
+      }, containerRef)
+      cleanup = () => ctx.revert()
+    })
+    return () => cleanup?.()
   }, [])
 
   const channels = [

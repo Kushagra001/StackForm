@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
+import { loadGsap } from '@/lib/gsap'
 
 export function BlobCursor() {
   const blobRef = useRef<HTMLDivElement>(null)
@@ -24,47 +24,53 @@ export function BlobCursor() {
     const blob = blobRef.current
     if (!blob) return
 
-    const xTo = gsap.quickTo(blob, 'x', { duration: 0.06, ease: 'power1.out' })
-    const yTo = gsap.quickTo(blob, 'y', { duration: 0.06, ease: 'power1.out' })
+    let cleanup: (() => void) | undefined
 
-    let hasMoved = false
-    const onMove = (e: MouseEvent) => {
-      if (!hasMoved) {
-        hasMoved = true
-        setVisible(true)
+    loadGsap().then(({ gsap }) => {
+      const xTo = gsap.quickTo(blob, 'x', { duration: 0.06, ease: 'power1.out' })
+      const yTo = gsap.quickTo(blob, 'y', { duration: 0.06, ease: 'power1.out' })
+
+      let hasMoved = false
+      const onMove = (e: MouseEvent) => {
+        if (!hasMoved) {
+          hasMoved = true
+          setVisible(true)
+        }
+        xTo(e.clientX - 18)
+        yTo(e.clientY - 18)
       }
-      xTo(e.clientX - 18)
-      yTo(e.clientY - 18)
-    }
 
-    const onEnterLink = () =>
-      gsap.to(blob, { scale: 2.2, duration: 0.2 })
-    const onLeaveLink = () =>
-      gsap.to(blob, { scale: 1, duration: 0.2 })
-    const onMouseDown = () =>
-      gsap.to(blob, { scale: 0.85, duration: 0.1 })
-    const onMouseUp = () =>
-      gsap.to(blob, { scale: 1, duration: 0.15 })
+      const onEnterLink = () =>
+        gsap.to(blob, { scale: 2.2, duration: 0.2 })
+      const onLeaveLink = () =>
+        gsap.to(blob, { scale: 1, duration: 0.2 })
+      const onMouseDown = () =>
+        gsap.to(blob, { scale: 0.85, duration: 0.1 })
+      const onMouseUp = () =>
+        gsap.to(blob, { scale: 1, duration: 0.15 })
 
-    const interactive = document.querySelectorAll('a, button, [role="button"]')
-    interactive.forEach(el => {
-      el.addEventListener('mouseenter', onEnterLink)
-      el.addEventListener('mouseleave', onLeaveLink)
+      const interactive = document.querySelectorAll('a, button, [role="button"]')
+      interactive.forEach(el => {
+        el.addEventListener('mouseenter', onEnterLink)
+        el.addEventListener('mouseleave', onLeaveLink)
+      })
+
+      window.addEventListener('mousemove', onMove)
+      window.addEventListener('mousedown', onMouseDown)
+      window.addEventListener('mouseup', onMouseUp)
+
+      cleanup = () => {
+        window.removeEventListener('mousemove', onMove)
+        window.removeEventListener('mousedown', onMouseDown)
+        window.removeEventListener('mouseup', onMouseUp)
+        interactive.forEach(el => {
+          el.removeEventListener('mouseenter', onEnterLink)
+          el.removeEventListener('mouseleave', onLeaveLink)
+        })
+      }
     })
 
-    window.addEventListener('mousemove', onMove)
-    window.addEventListener('mousedown', onMouseDown)
-    window.addEventListener('mouseup', onMouseUp)
-
-    return () => {
-      window.removeEventListener('mousemove', onMove)
-      window.removeEventListener('mousedown', onMouseDown)
-      window.removeEventListener('mouseup', onMouseUp)
-      interactive.forEach(el => {
-        el.removeEventListener('mouseenter', onEnterLink)
-        el.removeEventListener('mouseleave', onLeaveLink)
-      })
-    }
+    return () => cleanup?.()
   }, [isDesktop])
 
   if (!isDesktop) return null
@@ -86,6 +92,7 @@ export function BlobCursor() {
           opacity: visible ? 1 : 0,
           transition: 'opacity 0.3s',
           willChange: 'transform',
+          contain: 'layout style',
           transform: 'translate(0px, 0px)',
         }}
       >
