@@ -1,6 +1,19 @@
 {
   "buildCommand": "pnpm build",
   "outputDirectory": ".next",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-forwarded-proto",
+          "value": "http"
+        }
+      ],
+      "destination": "https://stack-form.dev/:path*",
+      "permanent": true
+    }
+  ]
 }
-
