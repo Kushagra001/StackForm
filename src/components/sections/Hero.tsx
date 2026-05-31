@@ -59,7 +59,7 @@ export function Hero() {
       const id = win.requestIdleCallback(load, { timeout: 1500 })
       return () => {
         cancelled = true
-        win.cancelIdleCallback && win.cancelIdleCallback(id)
+        if (win.cancelIdleCallback) win.cancelIdleCallback(id)
       }
     }
     const t = setTimeout(load, 1500)

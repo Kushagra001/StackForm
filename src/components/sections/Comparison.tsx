@@ -8,7 +8,7 @@ const comparisons = [
   { theirs: 'Project manager + junior devs', mine: 'You talk to me directly' },
   { theirs: '3–6 month timelines', mine: '4–8 weeks, defined scope' },
   { theirs: 'Website, then "API integration coming soon"', mine: 'Automation wired in from day one' },
-  { theirs: '₹5L+ minimum engagement', mine: 'Starts at ₹15K' },
+  { theirs: '$7,500+ minimum engagement', mine: 'Starts at $250' },
 ]
 
 export function Comparison() {

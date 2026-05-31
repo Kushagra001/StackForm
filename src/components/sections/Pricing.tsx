@@ -7,7 +7,7 @@ import { Check } from 'lucide-react'
 const packages = [
   {
     name: 'Starter',
-    price: '₹15K–₹30K',
+    price: '$250–$500',
     duration: '2–3 weeks',
     for: 'Landing pages, single-service sites',
     includes: [
@@ -19,7 +19,7 @@ const packages = [
   },
   {
     name: 'System',
-    price: '₹40K–₹1L',
+    price: '$600–$1,500',
     duration: '4–6 weeks',
     for: 'Full sites with automation',
     includes: [
@@ -32,7 +32,7 @@ const packages = [
   },
   {
     name: 'Full Build',
-    price: '₹1L–₹1.5L',
+    price: '$1,500–$2,500',
     duration: '6–8 weeks',
     for: 'E-commerce, funnels, complex systems',
     includes: [

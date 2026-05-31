@@ -6,7 +6,7 @@ import { loadGsap } from '@/lib/gsap'
 
 const metrics = [
   { value: '5+',    label: 'Projects shipped',    sub: 'All live in 2024–25' },
-  { value: '₹15K',  label: 'Starting budget',     sub: 'Scales with scope' },
+  { value: '$250',  label: 'Starting budget',     sub: 'Scales with scope' },
   { value: '4–8',   label: 'Weeks per project',   sub: 'Defined, not open-ended' },
   { value: '100%',  label: 'Direct communication', sub: 'You talk to me, always' },
 ]
@@ -189,8 +189,8 @@ export function About() {
               with me: no middlemen, no offshore handoffs, no surprises.
             </p>
             <p>
-              Currently taking on new projects. Engagements start at ₹15,000
-              for smaller scopes, ₹40K–₹1.5L for full systems. If you&apos;re
+              Currently taking on new projects. Engagements start at $250
+              for smaller scopes, $600–$2,500 for full systems. If you&apos;re
               not sure where your project falls, a 20-minute call will clarify
               everything.
             </p>
