@@ -4,6 +4,20 @@ import { useEffect, useRef, useState } from 'react'
 import { loadGsap } from '@/lib/gsap'
 import { Button } from '@/components/ui/Button'
 
+// Helper to detect WebGL support
+function detectWebGL(): boolean {
+  if (typeof window === 'undefined') return false
+  try {
+    const canvas = document.createElement('canvas')
+    return !!(
+      window.WebGLRenderingContext &&
+      (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+    )
+  } catch {
+    return false
+  }
+}
+
 // Component type for dynamically loaded Spline scene
 type SplineSceneComponent = React.ComponentType<Record<string, never>>
 
@@ -37,8 +51,8 @@ export function Hero() {
   }, [])
 
   useEffect(() => {
-    // Only load Spline on desktop, and only after browser is idle.
-    // Keeps the 563 KiB Three.js/Spline chunk off mobile entirely.
+    // Only load Spline on desktop devices that support WebGL, and only after browser is idle.
+    // Keeps the heavy Three.js/Spline chunk off unsupported or portrait mobile devices entirely.
     const win = window as unknown as Window & {
       requestIdleCallback?: (cb: () => void, opts?: { timeout?: number }) => number
       cancelIdleCallback?: (id: number) => void
@@ -47,8 +61,8 @@ export function Hero() {
     let cancelled = false
     const load = () => {
       if (cancelled) return
-      // Only load if on desktop
-      if (window.innerWidth >= 768) {
+      // Only load on desktop and WebGL-supported devices
+      if (window.innerWidth >= 768 && detectWebGL()) {
         import('@/components/three/SplineHeroScene').then((mod) => {
           if (!cancelled) setSceneComponent(() => mod.SplineHeroScene as SplineSceneComponent)
         })
@@ -267,8 +281,43 @@ export function Hero() {
               height: '640px',
             }}
           >
-            {SceneComponent ? <SceneComponent /> : (
-              <div aria-hidden="true" style={{width: '100%', height: '100%', background: 'radial-gradient(circle at 30% 30%, rgba(79,110,247,0.04), transparent 40%)'}} />
+            {SceneComponent ? (
+              <SceneComponent />
+            ) : (
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                {/* Visual grid ambient fallback */}
+                <div 
+                  aria-hidden="true" 
+                  style={{
+                    position: 'absolute', 
+                    inset: 0, 
+                    background: 'radial-gradient(circle at 30% 30%, rgba(79,110,247,0.04), transparent 40%)'
+                  }} 
+                />
+                {/* Instant High-Quality Fallback Sphere */}
+                <img
+                  src="/sphere-fallback.png"
+                  alt="Interactive 3D Sphere Fallback"
+                  style={{
+                    position: 'absolute',
+                    width: '130%',
+                    height: '100%',
+                    left: '-20%',
+                    top: 0,
+                    objectFit: 'contain',
+                    pointerEvents: 'none',
+                    userSelect: 'none',
+                  }}
+                />
+              </div>
             )}
 
             {/* Floating label — top left of scene */}

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Spline from '@splinetool/react-spline'
 
 interface SplineHeroSceneProps {
@@ -11,6 +11,23 @@ export function SplineHeroScene({
   scenePath = '/scene.splinecode'
 }: SplineHeroSceneProps) {
   const [loaded, setLoaded] = useState(false)
+  const [timedOut, setTimedOut] = useState(false)
+
+  useEffect(() => {
+    if (loaded) return
+
+    // Set a fallback timeout of 3.5 seconds.
+    // If Spline fails to initialize WebGL or is extremely slow, 
+    // we gracefully transition to the high-quality static image.
+    const timer = setTimeout(() => {
+      if (!loaded) {
+        console.warn('Spline load timed out. Falling back to static image.');
+        setTimedOut(true)
+      }
+    }, 3500)
+
+    return () => clearTimeout(timer)
+  }, [loaded])
 
   return (
     <div
@@ -25,7 +42,7 @@ export function SplineHeroScene({
       }}
     >
       {/* Premium micro-animated high-tech loader */}
-      {!loaded && (
+      {!loaded && !timedOut && (
         <div
           style={{
             position: 'absolute',
@@ -34,7 +51,7 @@ export function SplineHeroScene({
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor: 'transparent',
-            zIndex: 1,
+            zIndex: 2,
             pointerEvents: 'none',
           }}
         >
@@ -86,20 +103,42 @@ export function SplineHeroScene({
         </div>
       )}
 
-      {/* Interactive Local Spline Canvas (Watermark-hidden, responsive, custom cursor compliant) */}
-      <Spline
-        scene={scenePath}
-        onLoad={() => setLoaded(true)}
+      {/* High-quality matching fallback image */}
+      <img
+        src="/sphere-fallback.png"
+        alt="Interactive 3D Sphere Fallback"
         style={{
           position: 'absolute',
           width: '130%',
           height: '100%',
           left: '-20%',
           top: 0,
-          opacity: loaded ? 1 : 0,
+          objectFit: 'contain',
+          opacity: loaded ? 0 : 1, // Smoothly cross-fade to interactive scene once fully loaded
           transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+          pointerEvents: 'none',
+          userSelect: 'none',
+          zIndex: 1,
         }}
       />
+
+      {/* Interactive Local Spline Canvas (Watermark-hidden, responsive, custom cursor compliant) */}
+      {!timedOut && (
+        <Spline
+          scene={scenePath}
+          onLoad={() => setLoaded(true)}
+          style={{
+            position: 'absolute',
+            width: '130%',
+            height: '100%',
+            left: '-20%',
+            top: 0,
+            opacity: loaded ? 1 : 0,
+            transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+            zIndex: 1,
+          }}
+        />
+      )}
 
       {/* Loader Keyframe Styles */}
       <style>{`
@@ -114,5 +153,6 @@ export function SplineHeroScene({
     </div>
   )
 }
+
 
 
