@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { sanity, urlFor } from "@/lib/sanity";
 import { PROJECT_QUERY, PROJECTS_QUERY } from "@/lib/queries";
@@ -23,6 +24,40 @@ export async function generateStaticParams() {
   } catch {
     return [];
   }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  let project: Project | null = null;
+
+  try {
+    if (process.env.NEXT_PUBLIC_SANITY_PROJECT_ID && process.env.NEXT_PUBLIC_SANITY_PROJECT_ID !== "placeholder") {
+      project = await sanity.fetch(PROJECT_QUERY, { slug });
+    }
+  } catch {
+    // continue
+  }
+
+  // Fallback details if not loaded
+  const fallbacks: Record<string, { title: string; tagline: string }> = {
+    flow: { title: "Flōw", tagline: "Task management SaaS landing page." },
+    arca: { title: "Arca Studio", tagline: "Financial advisory firm." },
+    medica: { title: "Medica", tagline: "Medical centre with Airtable booking." },
+    kern: { title: "Kern", tagline: "Premium coffee D2C store." },
+    axiom: { title: "Axiom", tagline: "High-ticket coaching funnel." },
+  };
+
+  const fallback = fallbacks[slug];
+  const title = project?.title || fallback?.title || (slug.charAt(0).toUpperCase() + slug.slice(1));
+  const tagline = project?.tagline || fallback?.tagline || "Selected project case study.";
+
+  return {
+    title: `${title} Case Study | Stackform`,
+    description: tagline,
+    alternates: {
+      canonical: `/work/${slug}`,
+    },
+  };
 }
 
 export const dynamic = "force-dynamic";

@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://stack-form.dev",
+    canonical: "/",
   },
 };
 

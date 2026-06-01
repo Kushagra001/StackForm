@@ -8,6 +8,9 @@ import type { Project } from "@/types/project";
 export const metadata = {
   title: "Work: Stackform",
   description: "Selected projects. Five systems built for growth.",
+  alternates: {
+    canonical: "/work",
+  },
 };
 
 export const dynamic = "force-dynamic";
