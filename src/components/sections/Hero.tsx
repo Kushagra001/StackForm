@@ -43,7 +43,20 @@ export function Hero() {
           .from(subRef.current, { opacity: 0, y: 24, duration: 0.6 }, '-=0.4')
           .from(ctaRef.current, { opacity: 0, y: 20, duration: 0.5 }, '-=0.3')
           .from(statsRef.current, { opacity: 0, duration: 0.4 }, '-=0.2')
-          .from(sceneRef.current, { opacity: 0, scale: 0.96, duration: 1.0, ease: 'power2.out' }, '<0.1')
+
+        // Defer 3D sphere/fallback entry animation until it's actually in viewport.
+        // On desktop it triggers immediately; on mobile it triggers gracefully on scroll!
+        gsap.from(sceneRef.current, {
+          opacity: 0,
+          scale: 0.96,
+          duration: 1.0,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: sceneRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          }
+        })
       })
       cleanup = () => ctx.revert()
     })
@@ -316,6 +329,7 @@ export function Hero() {
                     mixBlendMode: 'screen',
                     pointerEvents: 'none',
                     userSelect: 'none',
+                    animation: 'fallbackSphereFloat 6s ease-in-out infinite',
                   }}
                 />
               </div>
@@ -409,6 +423,10 @@ export function Hero() {
         @keyframes heroFloat {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-8px); }
+        }
+        @keyframes fallbackSphereFloat {
+          0%, 100% { transform: translateY(0px) rotate(0deg) scale(1.0); }
+          50% { transform: translateY(-10px) rotate(2deg) scale(1.02); }
         }
         @keyframes scrollPulse {
           0%, 100% { opacity: 0.4; transform: scaleY(1); }

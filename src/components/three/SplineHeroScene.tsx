@@ -120,6 +120,7 @@ export function SplineHeroScene({
           pointerEvents: 'none',
           userSelect: 'none',
           zIndex: 1,
+          animation: 'fallbackSphereFloat 6s ease-in-out infinite',
         }}
       />
 
@@ -149,6 +150,10 @@ export function SplineHeroScene({
         @keyframes splineLoaderPulse {
           0%, 100% { opacity: 0.4; }
           50% { opacity: 1; }
+        }
+        @keyframes fallbackSphereFloat {
+          0%, 100% { transform: translateY(0px) rotate(0deg) scale(1.0); }
+          50% { transform: translateY(-10px) rotate(2deg) scale(1.02); }
         }
       `}</style>
     </div>
