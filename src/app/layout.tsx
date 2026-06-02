@@ -39,14 +39,6 @@ export const metadata: Metadata = {
       "Conversion-focused web development with automation expertise. D2C brands, SaaS startups, local service businesses.",
     url: "https://stack-form.dev",
     siteName: "Stackform",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Stackform Agency",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
@@ -55,7 +47,6 @@ export const metadata: Metadata = {
     title: "Stackform: I build systems that grow your business.",
     description:
       "Conversion-focused web development with automation expertise.",
-    images: ["/og-image.png"],
     site: "@StackForm_dev",
     creator: "@StackForm_dev",
   },

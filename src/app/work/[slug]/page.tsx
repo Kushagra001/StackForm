@@ -57,6 +57,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/work/${slug}`,
     },
+    openGraph: {
+      title: `${title} Case Study | Stackform`,
+      description: tagline,
+      url: `https://stack-form.dev/work/${slug}`,
+      siteName: "Stackform",
+      images: [
+        {
+          url: "https://stack-form.dev/opengraph-image", // Fallback, could be dynamically generated per project
+          width: 1200,
+          height: 630,
+        }
+      ]
+    }
   };
 }
 

@@ -28,8 +28,26 @@ export default async function HomePage() {
     console.error("Failed to fetch sanity projects:", err);
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Stackform",
+    "url": "https://stack-form.dev",
+    "logo": "https://stack-form.dev/icon.svg",
+    "description": "Conversion-focused web development with automation expertise. D2C brands, SaaS startups, local service businesses.",
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    }
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Nav />
       <main>
         <Hero />
