@@ -113,7 +113,8 @@ export function SplineHeroScene({
           height: '100%',
           left: '-20%',
           top: 0,
-          objectFit: 'contain',
+          objectFit: 'cover',
+          mixBlendMode: 'screen',
           opacity: loaded ? 0 : 1, // Smoothly cross-fade to interactive scene once fully loaded
           transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
           pointerEvents: 'none',

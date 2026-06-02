@@ -312,7 +312,8 @@ export function Hero() {
                     height: '100%',
                     left: '-20%',
                     top: 0,
-                    objectFit: 'contain',
+                    objectFit: 'cover',
+                    mixBlendMode: 'screen',
                     pointerEvents: 'none',
                     userSelect: 'none',
                   }}

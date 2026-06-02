@@ -18,16 +18,28 @@ async function main() {
   console.log('Waiting for Spline scene to load...');
   await page.waitForTimeout(5000); // Wait 5 seconds for full load and animation
   
+  // HIDE all floating labels before taking the screenshot so they are not baked into the image
+  console.log('Hiding floating labels...');
+  await page.evaluate(() => {
+    const divs = Array.from(document.querySelectorAll('div'));
+    divs.forEach(div => {
+      const text = div.textContent || '';
+      if (text.includes('Core Stack') || text.includes('Performance') || text.includes('Integrations')) {
+        const style = window.getComputedStyle(div);
+        if (style.position === 'absolute') {
+          div.style.display = 'none';
+        }
+      }
+    });
+  });
+  
   // Find the canvas inside the hero section's right column
-  // Let's locate the canvas or the container
   const heroRight = page.locator('#hero canvas');
   
   if (await heroRight.count() > 0) {
     console.log('Canvas found. Capturing screenshot of the 3D sphere canvas...');
     const outputPath = path.join(__dirname, '..', 'public', 'sphere-fallback.png');
     
-    // We want the transparent canvas or the container
-    // To make sure it has a transparent background, we capture the canvas element directly
     await heroRight.first().screenshot({
       path: outputPath,
       omitBackground: true, // Transparent background!
