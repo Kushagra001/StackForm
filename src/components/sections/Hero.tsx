@@ -74,8 +74,8 @@ export function Hero() {
     let cancelled = false
     const load = () => {
       if (cancelled) return
-      // Only load on desktop and WebGL-supported devices
-      if (window.innerWidth >= 768 && detectWebGL()) {
+      // Load on all WebGL-supported devices
+      if (detectWebGL()) {
         import('@/components/three/SplineHeroScene').then((mod) => {
           if (!cancelled) setSceneComponent(() => mod.SplineHeroScene as SplineSceneComponent)
         })
@@ -321,12 +321,11 @@ export function Hero() {
                   alt="Interactive 3D Sphere Fallback"
                   style={{
                     position: 'absolute',
-                    width: '130%',
+                    width: '100%',
                     height: '100%',
-                    left: '-20%',
+                    left: 0,
                     top: 0,
-                    objectFit: 'cover',
-                    mixBlendMode: 'screen',
+                    objectFit: 'contain',
                     pointerEvents: 'none',
                     userSelect: 'none',
                     animation: 'fallbackSphereFloat 6s ease-in-out infinite',

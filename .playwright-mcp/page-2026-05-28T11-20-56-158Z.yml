@@ -1,0 +1,590 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e3]:
+    - link "Stackform" [ref=e4]:
+      - /url: /
+      - generic [ref=e5]:
+        - img [ref=e6]
+        - generic [ref=e11]: Stackform
+    - generic [ref=e12]:
+      - link "Work" [ref=e13]:
+        - /url: /#work
+      - link "Services" [ref=e14]:
+        - /url: /#services
+      - link "About" [ref=e15]:
+        - /url: /#about
+      - link "Contact" [ref=e16]:
+        - /url: /#contact
+    - button "hello@stack-form.dev" [ref=e19]:
+      - generic [ref=e20]: hello@stack-form.dev
+      - img [ref=e21]
+  - main [ref=e24]:
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - generic [ref=e29]: Available for new projects
+            - link "View services →" [ref=e30]:
+              - /url: "#services"
+          - heading "Built as systems. Not just websites." [level=1] [ref=e31]:
+            - text: Built as systems.
+            - generic [ref=e32]: Not just
+            - text: websites.
+          - paragraph [ref=e33]: I build conversion-focused websites with automation wired in. Lead capture, CRM integration, email sequences; systems that work while you sleep.
+          - generic [ref=e34]:
+            - link "See the work" [ref=e35]:
+              - /url: "#work"
+            - link "Start a project →" [ref=e36]:
+              - /url: "#contact"
+          - generic [ref=e37]:
+            - generic [ref=e39]:
+              - generic [ref=e40]: ●
+              - generic [ref=e41]: METRICS
+            - generic [ref=e43]:
+              - generic [ref=e44]:
+                - generic [ref=e45]: Projects
+                - generic [ref=e46]: "05"
+              - generic [ref=e47]:
+                - generic [ref=e48]: Automations
+                - generic [ref=e49]: "03"
+              - generic [ref=e50]:
+                - generic [ref=e51]: Uptime
+                - generic [ref=e52]: 100%
+        - generic [ref=e54]:
+          - generic [ref=e58]:
+            - generic [ref=e59]: Core Stack
+            - generic [ref=e60]: Next.js · TypeScript
+          - generic [ref=e61]:
+            - generic [ref=e62]: Performance
+            - generic [ref=e63]: 100 Lighthouse Score
+          - generic [ref=e64]:
+            - generic [ref=e65]: Integrations
+            - generic [ref=e66]: CRM · Email · Sanity
+      - generic [ref=e68]: Scroll
+    - generic [ref=e70]:
+      - generic [ref=e72]: "TRUSTED BY SYSTEMS I'VE BUILT FOR:"
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e77]: SaaS startups
+          - generic [ref=e78]: ·
+        - generic [ref=e79]:
+          - generic [ref=e80]: D2C brands
+          - generic [ref=e81]: ·
+        - generic [ref=e82]:
+          - generic [ref=e83]: Medical clinics
+          - generic [ref=e84]: ·
+        - generic [ref=e85]:
+          - generic [ref=e86]: Premium apparel
+          - generic [ref=e87]: ·
+        - generic [ref=e88]:
+          - generic [ref=e89]: Marketing consultants
+          - generic [ref=e90]: ·
+        - generic [ref=e91]:
+          - generic [ref=e92]: E-commerce founders
+          - generic [ref=e93]: ·
+        - generic [ref=e94]:
+          - generic [ref=e95]: Service businesses
+          - generic [ref=e96]: ·
+        - generic [ref=e97]:
+          - generic [ref=e98]: Agency clients
+          - generic [ref=e99]: ·
+        - generic [ref=e100]:
+          - generic [ref=e101]: SaaS startups
+          - generic [ref=e102]: ·
+        - generic [ref=e103]:
+          - generic [ref=e104]: D2C brands
+          - generic [ref=e105]: ·
+        - generic [ref=e106]:
+          - generic [ref=e107]: Medical clinics
+          - generic [ref=e108]: ·
+        - generic [ref=e109]:
+          - generic [ref=e110]: Premium apparel
+          - generic [ref=e111]: ·
+        - generic [ref=e112]:
+          - generic [ref=e113]: Marketing consultants
+          - generic [ref=e114]: ·
+        - generic [ref=e115]:
+          - generic [ref=e116]: E-commerce founders
+          - generic [ref=e117]: ·
+        - generic [ref=e118]:
+          - generic [ref=e119]: Service businesses
+          - generic [ref=e120]: ·
+        - generic [ref=e121]:
+          - generic [ref=e122]: Agency clients
+          - generic [ref=e123]: ·
+    - generic [ref=e125]:
+      - paragraph [ref=e126]: WHAT I BUILD
+      - heading "What you’re actually paying for." [level=2] [ref=e127]
+      - generic [ref=e128]:
+        - generic [ref=e130]:
+          - generic: "01"
+          - img [ref=e132]
+          - heading "Conversion-Focused Websites" [level=3] [ref=e135]
+          - paragraph [ref=e136]: "Next.js websites built around one goal: turning visitors into customers. Every layout decision is backed by conversion principles (not aesthetics alone)."
+          - generic [ref=e137]:
+            - generic [ref=e138]: Next.js
+            - generic [ref=e139]: TypeScript
+            - generic [ref=e140]: GSAP
+            - generic [ref=e141]: Framer Motion
+          - generic [ref=e142]:
+            - generic [ref=e144]: 0%
+            - generic [ref=e145]: avg. conversion lift
+        - generic [ref=e147]:
+          - generic: "02"
+          - img [ref=e149]
+          - heading "Automation Systems" [level=3] [ref=e151]
+          - paragraph [ref=e152]: "I connect your website to the tools you already use: CRMs, email platforms, WhatsApp, Slack. Leads captured automatically, no manual work."
+          - generic [ref=e155]:
+            - text: Last automation ran
+            - generic [ref=e156]: 65s
+            - text: ago
+          - generic [ref=e157]:
+            - generic [ref=e158]: Make.com
+            - generic [ref=e159]: Airtable
+            - generic [ref=e160]: Twilio
+            - generic [ref=e161]: Resend
+        - generic [ref=e163]:
+          - generic: "03"
+          - img [ref=e165]
+          - heading "E-commerce Builds" [level=3] [ref=e168]
+          - paragraph [ref=e169]: Shopify storefronts with custom Next.js frontends. Scroll-driven product storytelling, sticky cart, abandoned cart recovery, built to sell.
+          - generic [ref=e170]:
+            - generic [ref=e171]: Shopify API
+            - generic [ref=e172]: Next.js
+            - generic [ref=e173]: ScrollTrigger
+        - generic [ref=e175]:
+          - generic: "04"
+          - img [ref=e177]
+          - heading "Lead Generation Funnels" [level=3] [ref=e178]
+          - paragraph [ref=e179]: VSL-style landing pages with lead magnets, email nurture sequences, and Calendly booking. The complete system from visit to booked call.
+          - generic [ref=e180]:
+            - generic [ref=e181]: React Hook Form
+            - generic [ref=e182]: Zod
+            - generic [ref=e183]: ConvertKit
+            - generic [ref=e184]: Calendly
+    - generic [ref=e186]:
+      - paragraph [ref=e187]: SELECTED WORK
+      - heading "Real work. Real businesses. Real results." [level=2] [ref=e188]:
+        - text: Real work. Real businesses.
+        - text: Real results.
+      - generic [ref=e189]:
+        - generic [ref=e190]:
+          - generic [ref=e191]:
+            - generic [ref=e192]:
+              - generic [ref=e193]:
+                - img "Arca-Studio screenshot" [ref=e194]
+                - generic [ref=e196]: A
+              - generic [ref=e198]: View case study →
+            - generic [ref=e200]:
+              - generic [ref=e201]:
+                - generic [ref=e202]:
+                  - heading "Arca-Studio" [level=3] [ref=e203]
+                  - paragraph [ref=e204]: Creative agency. Horizontal scroll. Sanity CMS.
+                - generic [ref=e205]:
+                  - generic [ref=e206]: Next.js
+                  - generic [ref=e207]: SplitText
+                  - generic [ref=e208]: Three.js
+              - generic [ref=e209]:
+                - generic [ref=e210]: →
+                - generic [ref=e211]: "Case study CMS: zero redeploy to add projects"
+          - link "View Arca-Studio case study" [ref=e212]:
+            - /url: /work/arca
+            - generic [ref=e213]: View case study
+          - link "View live" [ref=e214]:
+            - /url: https://arca-studio.vercel.app/
+            - img [ref=e215]
+            - text: View live
+        - generic [ref=e219]:
+          - generic [ref=e220]:
+            - generic [ref=e221]:
+              - generic [ref=e222]:
+                - img "Medica screenshot" [ref=e223]
+                - generic [ref=e225]: M
+              - generic [ref=e227]: View case study →
+            - generic [ref=e229]:
+              - generic [ref=e230]:
+                - generic [ref=e231]:
+                  - heading "Medica" [level=3] [ref=e232]
+                  - paragraph [ref=e233]: Medical clinic. Booking form with automation.
+                - generic [ref=e234]:
+                  - generic [ref=e235]: Next.js
+                  - generic [ref=e236]: Airtable
+                  - generic [ref=e237]: Twilio
+              - generic [ref=e238]:
+                - generic [ref=e239]: →
+                - generic [ref=e240]: Form → Airtable CRM + WhatsApp confirmation via Twilio
+          - link "View Medica case study" [ref=e241]:
+            - /url: /work/medica
+            - generic [ref=e242]: View case study
+          - link "View live" [ref=e243]:
+            - /url: https://medica-sandy.vercel.app/
+            - img [ref=e244]
+            - text: View live
+        - generic [ref=e248]:
+          - generic [ref=e249]:
+            - generic [ref=e250]:
+              - generic [ref=e251]:
+                - img "Kern screenshot" [ref=e252]
+                - generic [ref=e254]: K
+              - generic [ref=e256]: View case study →
+            - generic [ref=e258]:
+              - generic [ref=e259]:
+                - generic [ref=e260]:
+                  - heading "Kern" [level=3] [ref=e261]
+                  - paragraph [ref=e262]: Premium menswear. Scroll-driven product story.
+                - generic [ref=e263]:
+                  - generic [ref=e264]: Next.js
+                  - generic [ref=e265]: Shopify API
+                  - generic [ref=e266]: Stripe
+              - generic [ref=e267]:
+                - generic [ref=e268]: →
+                - generic [ref=e269]: "Shopify Storefront API: live product data, no duplicate sync"
+          - link "View Kern case study" [ref=e270]:
+            - /url: /work/kern
+            - generic [ref=e271]: View case study
+          - link "View live" [ref=e272]:
+            - /url: https://kern-black.vercel.app/
+            - img [ref=e273]
+            - text: View live
+        - generic [ref=e277]:
+          - generic [ref=e278]:
+            - generic [ref=e279]:
+              - generic [ref=e280]:
+                - img "Axiom Strategy screenshot" [ref=e281]
+                - generic [ref=e283]: A
+              - generic [ref=e285]: View case study →
+            - generic [ref=e287]:
+              - generic [ref=e288]:
+                - generic [ref=e289]:
+                  - heading "Axiom Strategy" [level=3] [ref=e290]
+                  - paragraph [ref=e291]: Marketing consultant. Lead magnet + nurture sequence.
+                - generic [ref=e292]:
+                  - generic [ref=e293]: Nextjs
+                  - generic [ref=e294]: Resend
+                  - generic [ref=e295]: ConvertKit
+              - generic [ref=e296]:
+                - generic [ref=e297]: →
+                - generic [ref=e298]: Download → 5-email nurture sequence via Resend + ConvertKit
+          - link "View Axiom Strategy case study" [ref=e299]:
+            - /url: /work/axiom
+            - generic [ref=e300]: View case study
+          - link "View live" [ref=e301]:
+            - /url: https://axiom-beta-seven.vercel.app/
+            - img [ref=e302]
+            - text: View live
+        - generic [ref=e306]:
+          - generic [ref=e307]:
+            - generic [ref=e308]:
+              - generic [ref=e309]:
+                - img "Flow screenshot" [ref=e310]
+                - generic [ref=e312]: F
+              - generic [ref=e314]: View case study →
+            - generic [ref=e316]:
+              - generic [ref=e317]:
+                - generic [ref=e318]:
+                  - heading "Flow" [level=3] [ref=e319]
+                  - paragraph [ref=e320]: AI productivity tool. Warm editorial aesthetic.
+                - generic [ref=e321]:
+                  - generic [ref=e322]: Next.js
+                  - generic [ref=e323]: GSAP
+                  - generic [ref=e324]: Make
+              - generic [ref=e325]:
+                - generic [ref=e326]: →
+                - generic [ref=e327]: Lead capture → CRM + email automation wired via Make.com
+          - link "View Flow case study" [ref=e328]:
+            - /url: /work/flow
+            - generic [ref=e329]: View case study
+          - link "View live" [ref=e330]:
+            - /url: https://flow-theta-six.vercel.app/
+            - img [ref=e331]
+            - text: View live
+    - generic [ref=e336]:
+      - paragraph [ref=e337]: HOW I WORK
+      - heading "How a project with me works." [level=2] [ref=e338]:
+        - text: How a project
+        - text: with me works.
+      - generic [ref=e340]:
+        - generic [ref=e341]:
+          - generic [ref=e344]: "01"
+          - generic [ref=e345]:
+            - heading "Discovery" [level=3] [ref=e346]
+            - generic [ref=e347]: 1 week
+          - paragraph [ref=e348]: I learn your business, your users, and your goal. No assumptions. Every project starts with a deep-dive call and a written brief you approve before I write a single line of code.
+        - generic [ref=e349]:
+          - generic [ref=e352]: "02"
+          - generic [ref=e353]:
+            - heading "Design in code" [level=3] [ref=e354]
+            - generic [ref=e355]: 1–2 weeks
+          - paragraph [ref=e356]: I prototype directly in the browser using real Next.js and real interactions. Faster feedback loops, fewer surprises at handover.
+        - generic [ref=e357]:
+          - generic [ref=e360]: "03"
+          - generic [ref=e361]:
+            - heading "Build & integrate" [level=3] [ref=e362]
+            - generic [ref=e363]: 2–4 weeks
+          - paragraph [ref=e364]: Full development, CMS setup, automation wiring, and QA. You see progress every 3 days. Nothing ships without your sign-off.
+        - generic [ref=e365]:
+          - generic [ref=e368]: "04"
+          - generic [ref=e369]:
+            - heading "Launch & support" [level=3] [ref=e370]
+            - generic [ref=e371]: Ongoing
+          - paragraph [ref=e372]: "I handle deployment, DNS, and the first 30 days of live monitoring. After that, retainer or per-request: your choice."
+    - generic [ref=e374]:
+      - generic [ref=e375]:
+        - paragraph [ref=e376]: PRICING & PACKAGES
+        - heading "Clear scope. Fixed price." [level=2] [ref=e377]
+      - generic [ref=e378]:
+        - generic [ref=e379]:
+          - heading "Starter" [level=3] [ref=e380]
+          - generic [ref=e381]: ₹15K–₹30K
+          - generic [ref=e382]:
+            - paragraph [ref=e383]:
+              - strong [ref=e384]: "Timeline:"
+              - text: 2–3 weeks
+            - paragraph [ref=e385]:
+              - strong [ref=e386]: "Best for:"
+              - text: Landing pages, single-service sites
+          - list [ref=e387]:
+            - listitem [ref=e388]:
+              - img [ref=e389]
+              - generic [ref=e391]: Next.js website (up to 5 sections)
+            - listitem [ref=e392]:
+              - img [ref=e393]
+              - generic [ref=e395]: Lead capture form + email notification
+            - listitem [ref=e396]:
+              - img [ref=e397]
+              - generic [ref=e399]: Mobile responsive
+            - listitem [ref=e400]:
+              - img [ref=e401]
+              - generic [ref=e403]: Deployed to Vercel
+        - generic [ref=e404]:
+          - generic [ref=e405]: Most Popular
+          - heading "System" [level=3] [ref=e406]
+          - generic [ref=e407]: ₹40K–₹1L
+          - generic [ref=e408]:
+            - paragraph [ref=e409]:
+              - strong [ref=e410]: "Timeline:"
+              - text: 4–6 weeks
+            - paragraph [ref=e411]:
+              - strong [ref=e412]: "Best for:"
+              - text: Full sites with automation
+          - list [ref=e413]:
+            - listitem [ref=e414]:
+              - img [ref=e415]
+              - generic [ref=e417]: Everything in Starter
+            - listitem [ref=e418]:
+              - img [ref=e419]
+              - generic [ref=e421]: CRM integration (Airtable/Notion)
+            - listitem [ref=e422]:
+              - img [ref=e423]
+              - generic [ref=e425]: Email automation sequence
+            - listitem [ref=e426]:
+              - img [ref=e427]
+              - generic [ref=e429]: WhatsApp/SMS confirmation
+            - listitem [ref=e430]:
+              - img [ref=e431]
+              - generic [ref=e433]: Sanity CMS for content
+        - generic [ref=e434]:
+          - heading "Full Build" [level=3] [ref=e435]
+          - generic [ref=e436]: ₹1L–₹1.5L
+          - generic [ref=e437]:
+            - paragraph [ref=e438]:
+              - strong [ref=e439]: "Timeline:"
+              - text: 6–8 weeks
+            - paragraph [ref=e440]:
+              - strong [ref=e441]: "Best for:"
+              - text: E-commerce, funnels, complex systems
+          - list [ref=e442]:
+            - listitem [ref=e443]:
+              - img [ref=e444]
+              - generic [ref=e446]: Everything in System
+            - listitem [ref=e447]:
+              - img [ref=e448]
+              - generic [ref=e450]: Shopify or custom checkout
+            - listitem [ref=e451]:
+              - img [ref=e452]
+              - generic [ref=e454]: Multi-step funnel
+            - listitem [ref=e455]:
+              - img [ref=e456]
+              - generic [ref=e458]: Analytics + conversion tracking
+            - listitem [ref=e459]:
+              - img [ref=e460]
+              - generic [ref=e462]: 30-day post-launch support
+      - paragraph [ref=e464]:
+        - text: Not sure which fits?
+        - link "A 20-minute call will tell us both." [ref=e465]:
+          - /url: "#contact"
+    - generic [ref=e467]:
+      - generic [ref=e468]:
+        - paragraph [ref=e469]: About
+        - heading "Why clients come back." [level=2] [ref=e470]
+      - generic [ref=e471]:
+        - generic [ref=e472]:
+          - img [ref=e474]:
+            - generic [ref=e476]: K
+          - generic [ref=e483]:
+            - generic [ref=e484]: Kushagra Singh Negi
+            - generic [ref=e485]: Developer · Jaipur, India
+            - generic [ref=e488]: Available for projects
+        - generic [ref=e489]:
+          - paragraph [ref=e490]: I'm Kushagra, a full-stack developer based in Jaipur, India. I build conversion-focused websites with automation wired in from day one. Not just a site, but a system that captures leads, sends confirmations, and connects to your existing tools automatically.
+          - paragraph [ref=e491]: "I take on a small number of projects at a time. You work directly with me: no middlemen, no offshore handoffs, no surprises."
+          - paragraph [ref=e492]: Currently taking on new projects. Engagements start at ₹15,000 for smaller scopes, ₹40K–₹1.5L for full systems. If you're not sure where your project falls, a 20-minute call will clarify everything.
+        - generic [ref=e494]:
+          - generic [ref=e499]: kushagra.json
+          - generic [ref=e500]:
+            - text: "{"
+            - text: "\"name\": \"Kushagra Singh Negi\","
+            - text: "\"location\": \"Jaipur, India 🇮🇳\","
+            - text: "\"role\": \"Full-stack + Automation\","
+            - text: "\"stack\": ["
+            - generic [ref=e501]: "\"React\","
+            - generic [ref=e502]: "\"Next.js\","
+            - generic [ref=e503]: "\"TypeScript\","
+            - generic [ref=e504]: "\"Tailwind CSS\","
+            - generic [ref=e505]: "\"GSAP\","
+            - generic [ref=e506]: "\"Framer Motion\","
+            - generic [ref=e507]: "\"Three.js\","
+            - generic [ref=e508]: "\"Node.js\","
+            - generic [ref=e509]: "\"Sanity CMS\","
+            - generic [ref=e510]: "\"Make.com\","
+            - generic [ref=e511]: "\"Airtable\""
+            - text: "],"
+            - text: "\"available\": true"
+            - text: "}"
+      - generic [ref=e512]:
+        - generic [ref=e513]:
+          - generic [ref=e514]: 5+
+          - generic [ref=e515]: Projects shipped
+          - generic [ref=e516]: All live in 2024–25
+        - generic [ref=e517]:
+          - generic [ref=e518]: ₹15K
+          - generic [ref=e519]: Starting budget
+          - generic [ref=e520]: Scales with scope
+        - generic [ref=e521]:
+          - generic [ref=e522]: 4–8
+          - generic [ref=e523]: Weeks per project
+          - generic [ref=e524]: Defined, not open-ended
+        - generic [ref=e525]:
+          - generic [ref=e526]: 100%
+          - generic [ref=e527]: Direct communication
+          - generic [ref=e528]: You talk to me, always
+    - generic [ref=e530]:
+      - generic [ref=e531]:
+        - paragraph [ref=e532]: WHY WORK WITH ME
+        - heading "The agency alternative." [level=2] [ref=e533]
+      - generic [ref=e534]:
+        - generic [ref=e535]:
+          - generic [ref=e536]: Traditional Agency
+          - generic [ref=e537]: Stackform
+        - generic [ref=e538]:
+          - generic [ref=e539]:
+            - generic [ref=e540]:
+              - img [ref=e541]
+              - generic [ref=e544]: Project manager + junior devs
+            - generic [ref=e545]:
+              - img [ref=e546]
+              - generic [ref=e548]: You talk to me directly
+          - generic [ref=e549]:
+            - generic [ref=e550]:
+              - img [ref=e551]
+              - generic [ref=e554]: 3–6 month timelines
+            - generic [ref=e555]:
+              - img [ref=e556]
+              - generic [ref=e558]: 4–8 weeks, defined scope
+          - generic [ref=e559]:
+            - generic [ref=e560]:
+              - img [ref=e561]
+              - generic [ref=e564]: Website, then "API integration coming soon"
+            - generic [ref=e565]:
+              - img [ref=e566]
+              - generic [ref=e568]: Automation wired in from day one
+          - generic [ref=e569]:
+            - generic [ref=e570]:
+              - img [ref=e571]
+              - generic [ref=e574]: ₹5L+ minimum engagement
+            - generic [ref=e575]:
+              - img [ref=e576]
+              - generic [ref=e578]: Starts at ₹15K
+    - generic [ref=e581]:
+      - paragraph [ref=e582]: Get in touch
+      - heading "Have a project? Let's talk." [level=2] [ref=e583]:
+        - text: Have a project?
+        - text: Let's talk.
+      - paragraph [ref=e584]: Most projects start with a 20-minute call. No pitch deck, no discovery questionnaire, just a conversation about what you're trying to build and whether I'm the right person to build it.
+      - generic [ref=e585]:
+        - link "Send an email hello@stack-form.dev Response within 24 hours" [ref=e586]:
+          - /url: mailto:hello@stack-form.dev
+          - img [ref=e587]
+          - generic [ref=e590]: Send an email
+          - generic [ref=e591]: hello@stack-form.dev
+          - generic [ref=e592]: Response within 24 hours
+        - link "WhatsApp Quick questions welcome Usually replies same day" [ref=e593]:
+          - /url: https://wa.me/918949370535
+          - img [ref=e594]
+          - generic [ref=e596]: WhatsApp
+          - generic [ref=e597]: Quick questions welcome
+          - generic [ref=e598]: Usually replies same day
+        - link "LinkedIn View full profile Connect or message" [ref=e599]:
+          - /url: https://www.linkedin.com/in/kushagra-singh-negi
+          - img [ref=e600]
+          - generic [ref=e602]: LinkedIn
+          - generic [ref=e603]: View full profile
+          - generic [ref=e604]: Connect or message
+      - generic [ref=e605]:
+        - paragraph [ref=e606]: "Or leave a message and I'll follow up:"
+        - generic [ref=e607]:
+          - textbox "Your name" [ref=e608]
+          - textbox "your@email.com" [ref=e609]
+          - textbox "What are you building?" [ref=e610]
+          - button "Send message →" [ref=e611]
+  - contentinfo [ref=e612]:
+    - generic [ref=e613]:
+      - generic [ref=e614]:
+        - generic [ref=e616]:
+          - generic [ref=e617]:
+            - img [ref=e618]
+            - generic [ref=e623]: Stackform
+          - heading "Let's build what others can't." [level=3] [ref=e624]
+        - generic [ref=e625]:
+          - heading "NAVIGATION" [level=4] [ref=e626]
+          - list [ref=e627]:
+            - listitem [ref=e628]:
+              - link "Selected Work" [ref=e629]:
+                - /url: "#work"
+            - listitem [ref=e630]:
+              - link "What We Do" [ref=e631]:
+                - /url: "#services"
+            - listitem [ref=e632]:
+              - link "Pricing Models" [ref=e633]:
+                - /url: "#pricing"
+            - listitem [ref=e634]:
+              - link "Our Process" [ref=e635]:
+                - /url: "#process"
+            - listitem [ref=e636]:
+              - link "About Us" [ref=e637]:
+                - /url: "#about"
+        - generic [ref=e638]:
+          - generic [ref=e639]:
+            - heading "GET IN TOUCH" [level=4] [ref=e640]
+            - generic [ref=e641]:
+              - link "hello@stack-form.dev" [ref=e642]:
+                - /url: mailto:hello@stack-form.dev
+              - link "WhatsApp Chat →" [ref=e643]:
+                - /url: https://wa.me/918949370535
+          - generic [ref=e644]:
+            - link "GitHub" [ref=e645]:
+              - /url: https://github.com/Kushagra001
+              - img [ref=e646]
+            - link "LinkedIn" [ref=e648]:
+              - /url: https://www.linkedin.com/in/kushagra-singh-negi
+              - img [ref=e649]
+            - link "Twitter / X" [ref=e651]:
+              - /url: https://x.com/StackForm_dev
+              - img [ref=e652]
+      - generic [ref=e654]:
+        - generic [ref=e655]:
+          - paragraph [ref=e656]: © 2026 Stackform. All rights reserved.
+          - paragraph [ref=e657]: "by Kushagra Singh Negi · currently building: stack-form.dev"
+        - generic [ref=e658]:
+          - generic [ref=e659]: 📍
+          - generic [ref=e660]: Jaipur, India · Available worldwide
+  - alert [ref=e661]

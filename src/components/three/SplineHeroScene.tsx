@@ -109,12 +109,11 @@ export function SplineHeroScene({
         alt="Interactive 3D Sphere Fallback"
         style={{
           position: 'absolute',
-          width: '130%',
+          width: '100%',
           height: '100%',
-          left: '-20%',
+          left: 0,
           top: 0,
-          objectFit: 'cover',
-          mixBlendMode: 'screen',
+          objectFit: 'contain',
           opacity: loaded ? 0 : 1, // Smoothly cross-fade to interactive scene once fully loaded
           transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
           pointerEvents: 'none',
