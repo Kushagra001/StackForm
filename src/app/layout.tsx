@@ -31,7 +31,7 @@ const calSans = localFont({
 export const metadata: Metadata = {
   title: "Stackform: I build systems that grow your business.",
   description:
-    "Stackform combines conversion-focused web development with automation expertise. Not just a website, but a complete system that captures leads, nurtures them, and integrates with your existing tools.",
+    "Conversion-focused web development and automation expertise. Stackform builds complete systems to capture leads, nurture them, and grow your business.",
   metadataBase: new URL("https://stack-form.dev"),
   openGraph: {
     title: "Stackform: I build systems that grow your business.",
